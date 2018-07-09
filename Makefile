@@ -25,7 +25,7 @@ oclean:
 
 re: fclean all
 
-R_test:
+rt:
 	gcc ./test/main.c -L. -L ./includes -lft -o run_test
 	./run_test
 	rm run_test
