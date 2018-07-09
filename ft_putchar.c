@@ -1,17 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rowong <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/09 12:50:12 by rowong            #+#    #+#             */
+/*   Updated: 2018/07/09 12:50:16 by rowong           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <unistd.h>
 
 void	ft_putchar(char c)
 {
-	// // int dummy;
-	// if(c){
-	// 	 write(1, &c, 1);
-	// 	 return;
-	//	// dummy = write(1, &c, 1);
-	// }
-	// (void ) dummy;
-
-	//If you desire optimization during compilation...
 	if (write(1, &c, 1))
-	{}
+	{
+		;
+	}
 }
