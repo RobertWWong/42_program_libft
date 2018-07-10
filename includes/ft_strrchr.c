@@ -11,3 +11,19 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	*ft_strrchr(const char *s, int c)
+{
+	char *p;
+	char *last;
+
+	p =(char *) s;
+	last = NULL;
+	while (*p)
+	{
+		if (*p == c)
+			last = p;
+		p++;
+	}
+	return (last);
+}

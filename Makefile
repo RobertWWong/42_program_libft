@@ -1,13 +1,10 @@
 NAME = libft.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Ofast -I ./includes/
-
 SRC := $(wildcard ./*.c) $(wildcard ./includes/*.c)
 OBJ := $(SRC:.c=.o)
-# SRC = ./ft_putchar.c ./ft_putstr.c
-# OBJ = $(patsubst %.c,%.o,$(SRC))
 
-all: $(NAME) oclean
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -c $(SRC)

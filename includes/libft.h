@@ -22,16 +22,16 @@ void			ft_memccpy();
 void			ft_memmove();
 int				ft_memchr();
 void			ft_memcmp();
-size_t			ft_strlen(char *str);
-char			*ft_strcpy(char *dest, char *src);
-char			*ft_strncpy(char *dest, char *src, unsigned int n);
-char			*ft_strcat(char *dest, char *src);
-char			*ft_strncat(char *dest, char *src, int nb);
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
-char			*ft_strchr(const char *s, int c);
-char			ft_strrchr();
-char			*ft_strstr(char *str, char *to_find);
-char			ft_strnstr();
+size_t			ft_strlen(char *str);									//need test
+char			*ft_strcpy(char *dest, char *src);						//need test
+char			*ft_strncpy(char *dest, char *src, unsigned int n);		//need test
+char			*ft_strcat(char *dest, char *src);						//need test
+char			*ft_strncat(char *dest, char *src, int nb);				//need test
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);	//need test
+char			*ft_strchr(const char *s, int c);	//need test
+char			*ft_strrchr(const char *s, int c);	//need test
+char			*ft_strstr(const char *str, const char *to_find);	//need test
+char			*ft_strnstr(const char *str, const char *to_find, size_t len);	//need test
 int				ft_strcmp(char *s1, char *s2);
 int				ft_strncmp(char *s1, char *s2, unsigned int n);
 int				ft_atoi(char *str);
