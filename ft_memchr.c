@@ -12,11 +12,14 @@
 
 #include "libft.h"
 
+// [fail]: your memchr does not cast in unsigned the memory		[x]
+// [fail]: your memchr failed to find a \0
+
 void			*ft_memchr(void *s, int c, size_t n)
 {
-	char *first;
+	unsigned char *first;
 
-	first = (char*)s;
+	first = (unsigned char*)s;
 	while (*first && n--)
 	{
 		if (*first == (unsigned char)c)

@@ -11,6 +11,11 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+// [fail]: your memcmp does not work with basic input
+// [fail]: your memcmp does not work with basic input
+// [fail]: your memcmp does not cast the memory in unsigned char
+// [fail]: your memcmp stop at \0
+// [fail]: your memcmp does not work with basic input
 
 int				ft_memcmp(const void *s1, const void *s2, size_t n)
 {

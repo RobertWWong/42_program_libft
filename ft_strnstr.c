@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+// [fail]: your strnstr does not work with basic input
 
 char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+// [fail]: your strrchr does not work with \0
 
 char	*ft_strrchr(const char *s, int c)
 {

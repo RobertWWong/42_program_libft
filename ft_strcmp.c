@@ -11,11 +11,13 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+// [fail]: your strcmp does not cast in unsigned the diff	[?]
+// [fail]: your strcmp does not work with non ascii chars
 
 int		ft_strcmp(const char *s1, const char *s2)
 {
 	while (*s1 || *s2)
 		if (*s1++ != *s2++)
-			return (*--s1 - *--s2);
+			return ((unsigned int)(*--s1 - *--s2));
 	return (0);
 }

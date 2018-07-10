@@ -12,6 +12,7 @@
 
 #include "libft.h"
 
+//return address doesn't return correctly
 void			ft_memset(void *b, int c, size_t len)
 {
 	unsigned char *ptr;
@@ -21,5 +22,5 @@ void			ft_memset(void *b, int c, size_t len)
 	{
 		*ptr++ = c;
 	}
-	return ((void)b);
+	return (b);
 }
