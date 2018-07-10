@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rowong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/09 13:30:23 by rowong            #+#    #+#             */
-/*   Updated: 2018/07/09 13:30:25 by rowong           ###   ########.fr       */
+/*   Created: 2018/07/10 11:23:56 by rowong            #+#    #+#             */
+/*   Updated: 2018/07/10 11:23:57 by rowong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *str, const char *to_find, size_t len)
+void			ft_memset(void *b, int c, size_t len)
 {
-	int		i;
-	size_t	find_len;
+	unsigned char *ptr;
 
-	find_len = ft_strnlen(to_find, len);
-	if (0 == (find_len))
-		return (char*)str;
-	i = -1;
-	while (i++ < (int)(len - find_len))
+	ptr = (unsigned char*)b;
+	while (len-- > 0)
 	{
-		if ((*str == *to_find) && (0 == ft_strncmp(str, to_find, find_len)))
-			return (char *)str;
-		str++;
+		*ptr++ = c;
 	}
-	return (NULL);
+	return ((void)b);
+
 }
