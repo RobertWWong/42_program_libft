@@ -14,21 +14,20 @@
 
 char	*ft_strstr(const char *str, const char *to_find)
 {
-	char	*substr;
-	char	*origin;
+	int i;
 
-	while (*str != '\0')
+	if (!*to_find && !*str)
+		return ((char *)str);
+	if (!*to_find)
+		return ((char *)str);
+	while (*str)
 	{
-		origin = str;
-		substr = to_find;
-		while (*str && *substr && *str == *substr)
-		{
-			str++;
-			substr++;
-		}
-		if (!*substr)
-			return (origin);
-		str = origin + 1;
+		i = 0;
+		while (str[i] == to_find[i] && to_find[i])
+			i++;
+		if (!to_find[i])
+			return ((char *)str);
+		str++;
 	}
-	return (0);
+	return (NULL);
 }
