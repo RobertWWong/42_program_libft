@@ -11,20 +11,19 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-// [fail]: your strrchr does not work with \0
 
 char	*ft_strrchr(const char *s, int c)
 {
 	char *p;
-	char *last;
+	const char *last;
 
-	p =(char *) s;
+	if (c == '\0')
+		return ft_strchr(s, '\0');
 	last = NULL;
-	while (*p)
+	while ((p = ft_strchr(s, (unsigned char)c)) != NULL)
 	{
-		if (*p == c)
-			last = p;
-		p++;
+		last = p;
+		s = p + 1;
 	}
-	return (last);
+	return ((char*)last);
 }

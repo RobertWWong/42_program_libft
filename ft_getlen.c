@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_getlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rowong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/09 13:22:55 by rowong            #+#    #+#             */
-/*   Updated: 2018/07/09 13:22:55 by rowong           ###   ########.fr       */
+/*   Created: 2018/07/11 10:07:08 by rowong            #+#    #+#             */
+/*   Updated: 2018/07/11 10:07:10 by rowong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			*ft_memcpy(void *dst, const void *src, size_t n)
+size_t	ft_getlen(const char *ptr)
 {
-	char		*d;
-	const char	*s;
+	size_t	cnt;
 
-	if (n == 0 || dst == src)
-		return (dst);
-	else
-	{
-		d = dst;
-		s = src;
-		while (n)
-		{
-			*d++ = *s++;
-			n--;
-		}
-		return (dst);
-	}
+	cnt = 0;
+	while (*ptr++)
+		cnt++;
+	return (cnt);
 }
