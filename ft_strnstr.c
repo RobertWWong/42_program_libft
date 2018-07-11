@@ -11,22 +11,26 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-// [fail]: your strnstr does not work with basic input
 
-char	*ft_strnstr(const char *str, const char *to_find, size_t len)
+char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	int		i;
-	size_t	find_len;
+	size_t	iter;
 
-	find_len = ft_strnlen(to_find, len);
-	if (0 == (find_len))
-		return (char*)str;
-	i = -1;
-	while (i++ < (int)(len - find_len))
+	if (!*needle && !*haystack)
+		return ((char *)haystack);
+	if (!*needle)
+		return ((char *)haystack);
+	iter = 0;
+	while (*haystack && iter < len)
 	{
-		if ((*str == *to_find) && (0 == ft_strncmp(str, to_find, find_len)))
-			return (char *)str;
-		str++;
+		i = 0;
+		while (haystack[i] == needle[i] && needle[i] && i + iter < len)
+			i++;
+		if (!needle[i])
+			return ((char *)haystack);
+		haystack++;
+		iter++;
 	}
 	return (NULL);
 }

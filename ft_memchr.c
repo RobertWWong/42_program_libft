@@ -12,8 +12,6 @@
 
 #include "libft.h"
 
-// [fail]: your memchr failed to find a \0
-
 void			*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char *first;

@@ -14,11 +14,11 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char *p;
-	const char *last;
+	char		*p;
+	const char	*last;
 
 	if (c == '\0')
-		return ft_strchr(s, '\0');
+		return (ft_strchr(s, '\0'));
 	last = NULL;
 	while ((p = ft_strchr(s, (unsigned char)c)) != NULL)
 	{

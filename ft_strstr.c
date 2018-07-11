@@ -12,22 +12,22 @@
 
 #include "libft.h"
 
-char	*ft_strstr(const char *str, const char *to_find)
+char			*ft_strstr(const char *haystack, const char *needle)
 {
 	int i;
 
-	if (!*to_find && !*str)
-		return ((char *)str);
-	if (!*to_find)
-		return ((char *)str);
-	while (*str)
+	if (!*needle && !*haystack)
+		return ((char*)haystack);
+	if (!*needle)
+		return ((char*)haystack);
+	while (*haystack)
 	{
 		i = 0;
-		while (str[i] == to_find[i] && to_find[i])
+		while (haystack[i] == needle[i] && needle[i])
 			i++;
-		if (!to_find[i])
-			return ((char *)str);
-		str++;
+		if (!needle[i])
+			return ((char *)haystack);
+		haystack++;
 	}
 	return (NULL);
 }
