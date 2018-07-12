@@ -85,18 +85,12 @@ static int mem_test()
 	return 1;
 }
 
-static int p2_str_test()
-{
-	
-	return 1;
-}
 int		main()
 {
-	// is_test();
-	// to_test();
-	// str_test();
-	// mem_test();
-
+	is_test();
+	to_test();
+	str_test();
+	mem_test();
 
 	return 0;
 }
