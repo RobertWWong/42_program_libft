@@ -10,5 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include libft.h
+#include "libft.h"
 
+void		ft_strclr(char *s)
+{
+	char *clr;
+
+	clr = s;
+	while (clr)
+		*clr++ = '\0';
+}
