@@ -11,3 +11,15 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void		ft_striter(char *s, void (*f)(char *))
+{
+	char *mover;
+
+	mover = s;
+	while (*mover)
+		{
+			f(mover);
+			mover++;
+		}
+}
