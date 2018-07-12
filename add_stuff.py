@@ -4,14 +4,14 @@ fname = files.split()
 
 print(fname)
 
-from subprocess import call
-import os
+# from subprocess import call
+# import os
 
-# automate_header = '''vim -c "Stdheader" +":$ | :put!='#include "libft.h"'" -c "x"  ./includes/{}.c'''.format(fname[0])
-# print(automate_header.split())
+# # automate_header = '''vim -c "Stdheader" +":$ | :put!='#include "libft.h"'" -c "x"  ./includes/{}.c'''.format(fname[0])
+# # print(automate_header.split())
 
-for f in fname:
-	automate_header = '''vim -c "Stdheader" +":$ | :put!='#include "libft.h"'" -c "wq"  ./includes/{}.c'''.format(f)
-	# print(automate_header.split())
-	os.system(automate_header)
-	# call(automate_header.split())
+# for f in fname:
+# 	automate_header = '''vim -c "Stdheader" +":$ | :put!='#include "libft.h"'" -c "wq"  ./includes/{}.c'''.format(f)
+# 	# print(automate_header.split())
+# 	os.system(automate_header)
+# 	# call(automate_header.split())
