@@ -11,3 +11,17 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void		ft_striteri(char *s, void (*f)(unsigned int, char *))
+{
+	char			*mover;
+	unsigned int	idx;
+
+	mover = s;
+	idx = 0;
+	while (*mover)
+	{
+		f(idx++, mover);
+		mover++;
+	}
+}
