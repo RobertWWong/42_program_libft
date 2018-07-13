@@ -16,9 +16,11 @@ clean:
 
 fclean: clean
 	/bin/rm -f $(NAME)
+i: clean
+	rm *.o
 
 re: fclean all
 
 rt:
-	gcc ./test/main.c -L. -L ./includes -lft -o run_test
+	gcc ./test/main.c -g -L. -L ./includes -lft -o run_test
 	./run_test
