@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_strncat(char *dest, const char *src, int nb)
+char	*ft_strncat(char *dest, const char *src, int n)
 {
 	int i;
 	int j;
@@ -21,7 +21,7 @@ char	*ft_strncat(char *dest, const char *src, int nb)
 	j = 0;
 	while (dest[i])
 		i++;
-	while (src[j] && j < nb)
+	while (src[j] && j < n)
 	{
 		dest[i + j] = src[j];
 		j++;

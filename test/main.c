@@ -85,12 +85,72 @@ static int mem_test()
 	return 1;
 }
 
+static int p2_str_test()
+{
+    // char *str = "i just want this part #############";
+    // size_t size = 22;
+    // char *ret = ft_strsub(str, 0, size);
+    //
+	// printf("testing string sub %s vs %s\n", str, ret );
+    // if (!strncmp(ret, str, size))
+    // {
+	// 	printf("ayyy it works\n");
+    //     free(ret);
+	// 	return 1;
+    //         // exit(TEST_SUCCESS);
+    // }
+    // free(ret);
+	char *s1 = "where is my ";
+    char *s2 = "malloc ???";
+    char *s3 = "where is my malloc ???";
+
+    char *res = ft_strjoin(s1, s2);
+	printf("hopefully s1+s2:  %s\n", res);
+    if (!strcmp(res, s3))
+    {
+		printf("wtf\n");
+		return 1;
+	}
+
+	return 1;
+}
+
+static int p2_put_test()
+{
+	printf("testing itos stuff\n");
+	char *num = "-23";
+	// char *s =	"1098765311";	//the result
+	// char *s =	"2147483648";	//the result
+	char *cmp;
+	cmp = ft_itoa(-23);
+
+	printf("old: %s vs new: %s\n", num, cmp );
+	return 1;
+}
+
+static int ptr_testing()
+{
+	char *s = "what the fuck";
+	printf("%s\n", s);
+	s = (s + 3);
+	printf("%s\n", s);
+	s = (s + ft_getlen(s));
+	printf("%s\n", s);
+	s = (s - 4);
+	printf("%s\n", s);
+
+	return 1;
+}
+
 int		main()
 {
-	is_test();
-	to_test();
-	str_test();
-	mem_test();
+	// is_test();
+	// to_test();
+	// str_test();
+	// mem_test();
+	// p2_str_test();
+	p2_put_test();
+	// ptr_testing()
 
 	return 0;
 }

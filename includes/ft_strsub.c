@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strclr.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rowong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/11 16:46:31 by rowong            #+#    #+#             */
-/*   Updated: 2018/07/11 16:46:31 by rowong           ###   ########.fr       */
+/*   Created: 2018/07/12 14:58:57 by rowong            #+#    #+#             */
+/*   Updated: 2018/07/12 14:58:57 by rowong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_strclr(char *s)
+char		*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	if (!s || !ft_strlen(s))
-		return ;
- 	ft_bzero((void*)s, ft_strlen(s));
+	char		*newstr;
+	const char 	*ptr;
+
+	if (!s)
+		return (NULL);
+	newstr = ft_strnew(len);
+	if (!newstr)
+		return (NULL);
+	ptr = s;
+	ptr += start;
+	ft_strncpy(newstr, ptr, len);
+	return (newstr);
 }
