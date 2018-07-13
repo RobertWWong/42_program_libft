@@ -118,11 +118,11 @@ static int p2_str_test()
 static int p2_put_test()
 {
 	printf("testing itos stuff\n");
-	char *num = "-23";
+	char *num = "-2147483648";
 	// char *s =	"1098765311";	//the result
 	// char *s =	"2147483648";	//the result
 	char *cmp;
-	cmp = ft_itoa(-23);
+	cmp = ft_itoa(-2147483647);
 
 	printf("old: %s vs new: %s\n", num, cmp );
 	return 1;
@@ -150,7 +150,16 @@ int		main()
 	// mem_test();
 	// p2_str_test();
 	p2_put_test();
-	// ptr_testing()
+	// ptr_testing();
+
+	// int i = 0;
+	// char *as = "what the fuck";
+	// while (i++ < 10 && (as = "polease onsda"))
+	// {
+	// 	as[i] = 'a';
+	// 	printf("%d and %s\n",i , as );
+	// }
+
 
 	return 0;
 }
