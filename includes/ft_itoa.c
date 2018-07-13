@@ -11,14 +11,12 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	find_len(int n, int sign)
+#include <stdio.h>
+static int	find_len(int n)
 {
 	int len;
 
 	len = 0;
-	if (sign < 0)
-		len++;
 	while (n > 0)
 	{
 		n /= 10;
@@ -26,20 +24,8 @@ static int	find_len(int n, int sign)
 	}
 	return (len);
 }
-// static char	*reverse(char *str, int front, int back)
-// {
-// 	int		tmp;
-//
-// 	while (front > back)
-// 	{
-// 		tmp = *(str - back);
-// 		*(str - back++) = *(str - front + 1);
-// 		*(str - front-- + 1) = tmp;
-// 	}
-// 	return (str - front - back + 1);
-// }
 
-static void		strrev(char *str)
+static char		*strrev(char *str)
 {
 	int i;
 	int tmp;
@@ -50,9 +36,10 @@ static void		strrev(char *str)
 	while (i < len)
 	{
 		tmp = str[i];
-		str[i] = str[len];
-		str[len--] = str[i++];
+		str[i++] = str[len];
+		str[len--] = tmp;
 	}
+	return (str);
 }
 
 char		*ft_itoa(int n)
@@ -62,22 +49,22 @@ char		*ft_itoa(int n)
 	char	*res;
 
 	if (n == 0)
-		return ("0\0");
+		return (ft_strcpy(ft_strnew(1), "0"));
 	if ((i = 0) || n == -2147483648)
 		return (ft_strdup("-2147483648"));
 	if ((sign = n) < 0)
 		if ((n = -n) > 0)
-			sign = -1 * ++i;
-	if (!(res = ft_strnew(find_len(n, sign) + 1)))
+			sign = -1;
+	if (!(res = ft_strnew(find_len(n) + 1)))
 		return (NULL);
 	while (n > 0)
 	{
-		*res++ = n % 10 + '0' + (i++ * 0);
+		res[i++] = n % 10 + '0';
 		n /= 10;
 	}
 	if (sign == -1 || (sign = 0))
-		*res++ = '-';
-	*res-- = '\0';
-	strrev((res - i - sign));
+		res[i++] = '-';
+	res[i] = '\0';
+	res = strrev((res));
 	return (res);
 }

@@ -122,7 +122,7 @@ static int p2_put_test()
 	// char *s =	"1098765311";	//the result
 	// char *s =	"2147483648";	//the result
 	char *cmp;
-	cmp = ft_itoa(-2147483647);
+	cmp = ft_itoa(-5859);
 
 	printf("old: %s vs new: %s\n", num, cmp );
 	return 1;
