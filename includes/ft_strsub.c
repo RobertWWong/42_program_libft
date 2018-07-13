@@ -15,7 +15,7 @@
 char		*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	char		*newstr;
-	const char 	*ptr;
+	const char	*ptr;
 
 	if (!s)
 		return (NULL);
