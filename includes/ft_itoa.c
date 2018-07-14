@@ -51,7 +51,7 @@ char		*ft_itoa(int n)
 	if (n == 0)
 		return (ft_strcpy(ft_strnew(1), "0"));
 	if ((i = 0) || n == -2147483648)
-		return (ft_strdup("-2147483648"));
+		return (ft_strcpy(ft_strnew(11), "-2147483648"));
 	if ((sign = n) < 0)
 		if ((n = -n) > 0)
 			sign = -1;
