@@ -100,17 +100,13 @@ static int p2_str_test()
     //         // exit(TEST_SUCCESS);
     // }
     // free(ret);
-	char *s1 = "where is my ";
-    char *s2 = "malloc ???";
-    char *s3 = "where is my malloc ???";
 
-    char *res = ft_strjoin(s1, s2);
-	printf("hopefully s1+s2:  %s\n", res);
-    if (!strcmp(res, s3))
-    {
-		printf("wtf\n");
-		return 1;
-	}
+	char *s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
+	char *s2 = "Hello \t  Please\n Trim me !";
+	char *ret = ft_strtrim(s1);
+
+	printf("%say\n", s2);
+	printf("%say\n", ret);
 
 	return 1;
 }
@@ -148,8 +144,8 @@ int		main()
 	// to_test();
 	// str_test();
 	// mem_test();
-	// p2_str_test();
-	p2_put_test();
+	p2_str_test();
+	// p2_put_test();
 	// ptr_testing();
 
 	// int i = 0;

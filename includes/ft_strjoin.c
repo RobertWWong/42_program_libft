@@ -20,11 +20,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	total = ft_getlen(s1) + ft_getlen(s2);
-	new = (char*)malloc(sizeof(char) * (total));
+	new = ft_strnew(total);
 	if (!new)
 		return (NULL);
 	new = ft_strcat(new, s1);
 	new = ft_strcat(new, s2);
-	new[total + 1] = '\0';
+	new[total] = '\0';
 	return (new);
 }
