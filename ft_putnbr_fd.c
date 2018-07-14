@@ -25,7 +25,7 @@ static int	find_len(int n)
 	return (len - 1);
 }
 
-void	ft_putnbr_fd(int n,int fd)
+void		ft_putnbr_fd(int n, int fd)
 {
 	char	digits[11];
 	int		i;

@@ -22,5 +22,5 @@ i: clean
 re: fclean all
 
 rt:
-	gcc ./test/main.c -g -L. -L ./includes -lft -o run_test
+	gcc ./not_main.c -g -L. -L ./includes -lft -o run_test
 	./run_test

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
 static int	find_len(int n)
 {
 	int len;
@@ -25,7 +25,7 @@ static int	find_len(int n)
 	return (len);
 }
 
-static char		*strrev(char *str)
+static char	*strrev(char *str)
 {
 	int i;
 	int tmp;
