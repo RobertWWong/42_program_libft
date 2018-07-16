@@ -1,26 +1,28 @@
 NAME = libft.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Ofast -I ./includes/
-SRC := $(wildcard ./*.c) $(wildcard ./includes/*.c)
+CFLAGS = -Wall -Wextra -Werror -Ofast
+SRC := $(wildcard ./*.c)
 OBJ := $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -c $(SRC)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
+$(OBJ): $(SRC)
+	$(CC) $(CFLAGS) -c $(SRC)
+
 clean:
-	/bin/rm -f $(OBJ)
+	rm -rf $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
-i: clean
-	rm *.o
+	rm -f $(NAME)
 
 re: fclean all
 
 rt:
-	gcc ./not_main.c -g -L. -L ./includes -lft -o run_test
+	gcc ./not_main.c -g -L. -lft -o run_test
 	./run_test
+
+.PHONY: clean fclean re
