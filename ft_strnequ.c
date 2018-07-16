@@ -16,7 +16,7 @@ int			ft_strnequ(char const *s1, char const *s2, size_t n)
 {
 	unsigned int i;
 
-	if (!s1 || !s2 || !n)
+	if (!s1 || !s2 || n == 0)
 		return (1);
 	i = ft_strncmp(s1, s2, n);
 	if (i == 0)
