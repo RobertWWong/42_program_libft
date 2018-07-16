@@ -28,8 +28,10 @@ typedef struct		s_coord
 {
 	int				cur_pos;
 	int				next_pos;
+	int             cur_idx;
 }					t_coord;
 
+void				ft_init_coord(t_coord *pos);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);

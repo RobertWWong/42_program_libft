@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	word_count(char const *s, char delimit)
+static	int	word_count(char const *s, char delimit)
 {
 	int words;
 	int start_del;
@@ -37,21 +37,24 @@ int	word_count(char const *s, char delimit)
 	return (words);
 }
 
-int	next_pos(char *str, int pos, char delimit)
+static	int	word_len(char *str, int pos, char delimit)
 {
-	while (str[pos] == delimit)
+    int org_pos;
+
+    org_pos = pos;
+	while (str[pos] != delimit)
 		pos++;
-	return (pos);
+	return (pos - org_pos);
 }
 
-int	word_len(char *str, int pos, char delimt)
+static	int	next_pos(char *str, int pos, char delimt)
 {
 	int len;
 
 	len = 0;
-	while (!(str[pos + len] == delimt || str[pos + len] == '\0'))
+	while ((str[pos + len] == delimt && str[pos + len] ))
 		len++;
-	return (len);
+	return (pos + len);
 }
 
 static	int	copy_word(char **res, char *str, t_coord *pos, char delimit)
@@ -59,43 +62,50 @@ static	int	copy_word(char **res, char *str, t_coord *pos, char delimit)
 	int wlen;
 	int next_p;
 	int i;
-
-	next_p = next_pos(str, pos->cur_pos, delimit);
-	wlen = word_len(str, next_p, delimit);
-	if (!(res[pos->cur_pos] = malloc(sizeof(char*) * (wlen + 1))))
+	wlen = word_len(str, pos->cur_pos, delimit);
+	next_p = next_pos(str, pos->next_pos + wlen, delimit);
+	pos->next_pos = next_p;
+	if (!(res[pos->cur_idx] = malloc(sizeof(char*) * (wlen + 1))))
 		return (-1);
 	i = 0;
 	while (i < wlen)
 	{
-		res[pos->cur_pos][i] = str[next_p + i];
+		res[pos->cur_idx][i] = str[pos->cur_pos + i];
 		i++;
 	}
-	res[pos->cur_pos][i] = '\0';
-	return (next_p + wlen);
+	res[pos->cur_idx][i] = '\0';
+	pos->cur_idx++;
+	pos->cur_pos = pos->next_pos;
+	return (1);
 }
 char		**ft_strsplit(char const *s, char c)
 {
 	char	**res;
 	int		total_words;
 	t_coord	*pos;
+	int     i;
 
+    i = -1;
 	pos = malloc(sizeof(pos) * 1);
 	pos->cur_pos = 0;
 	pos->next_pos = 0;
+	pos->cur_idx = 0;
 	total_words = word_count(s, c);
 	if (!(res = malloc(sizeof(char*) * (total_words + 1))))
 		return (NULL);
-	while (pos->cur_pos < total_words)
+	while (++i < total_words)
 	{
-		pos->next_pos = copy_word(res, (char*)s, pos, c);
+		while (*s == c && *s)
+			s++;
+		copy_word(res, (char*)s, pos, c);
 		if (pos->next_pos == -1)
 		{
 			free(pos);
+			free(res);
 			return (NULL);
 		}
-		pos->cur_pos = pos->cur_pos + 1;
 	}
-	res[pos->cur_pos] = NULL;
 	free(pos);
+	res[pos->cur_idx] = NULL;
 	return (res);
 }
