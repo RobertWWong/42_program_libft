@@ -37,75 +37,53 @@ static	int	word_count(char const *s, char delimit)
 	return (words);
 }
 
-static	int	word_len(char *str, int pos, char delimit)
-{
-    int org_pos;
-
-    org_pos = pos;
-	while (str[pos] != delimit)
-		pos++;
-	return (pos - org_pos);
-}
-
-static	int	next_pos(char *str, int pos, char delimt)
+static	int	next_pos(char *str, char delimt)
 {
 	int len;
 
 	len = 0;
-	while ((str[pos + len] == delimt && str[pos + len] ))
+	while (*str != delimt && *str)
+	{
+		str++;
 		len++;
-	return (pos + len);
+	}
+	return (len);
 }
 
-static	int	copy_word(char **res, char *str, t_coord *pos, char delimit)
+static char	*copy_word(char *str, size_t start, size_t len)
 {
-	int wlen;
-	int next_p;
-	int i;
-	wlen = word_len(str, pos->cur_pos, delimit);
-	next_p = next_pos(str, pos->next_pos + wlen, delimit);
-	pos->next_pos = next_p;
-	if (!(res[pos->cur_idx] = malloc(sizeof(char*) * (wlen + 1))))
-		return (-1);
-	i = 0;
-	while (i < wlen)
-	{
-		res[pos->cur_idx][i] = str[pos->cur_pos + i];
-		i++;
-	}
-	res[pos->cur_idx][i] = '\0';
-	pos->cur_idx++;
-	pos->cur_pos = pos->next_pos;
-	return (1);
+	char			*new_str;
+	const	char	*ptr;
+
+	if (!str)
+		return (NULL);
+	ptr = str;
+	if (!(new_str = ft_strnew(len)))
+		return (NULL);
+	ptr += start;
+	ft_strncpy(new_str, ptr, len);
+	return (new_str);
 }
+
 char		**ft_strsplit(char const *s, char c)
 {
 	char	**res;
+	int		i;
 	int		total_words;
-	t_coord	*pos;
-	int     i;
 
-    i = -1;
-	pos = malloc(sizeof(pos) * 1);
-	pos->cur_pos = 0;
-	pos->next_pos = 0;
-	pos->cur_idx = 0;
 	total_words = word_count(s, c);
-	if (!(res = malloc(sizeof(char*) * (total_words + 1))))
+	if (!(res = (char**)malloc(sizeof(char*) * (total_words + 1))))
 		return (NULL);
+	i = -1;
 	while (++i < total_words)
 	{
 		while (*s == c && *s)
 			s++;
-		copy_word(res, (char*)s, pos, c);
-		if (pos->next_pos == -1)
-		{
-			free(pos);
-			free(res);
+		res[i] = copy_word((char*)s, 0, next_pos((char*)s, c));
+		if (!res[i])
 			return (NULL);
-		}
+		s += next_pos((char*)s, c);
 	}
-	free(pos);
-	res[pos->cur_idx] = NULL;
+	res[i] = NULL;
 	return (res);
 }

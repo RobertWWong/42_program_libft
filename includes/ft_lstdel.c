@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rowong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/11 16:46:33 by rowong            #+#    #+#             */
-/*   Updated: 2018/07/11 16:46:33 by rowong           ###   ########.fr       */
+/*   Created: 2018/07/16 13:11:54 by rowong            #+#    #+#             */
+/*   Updated: 2018/07/16 13:11:55 by rowong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+void	ft_lstdel(t_list **alst, void (*del)(void*, size_t))
 {
-	if (!ap || !*ap)
-		return ;
-	free(*ap);
-	*ap = NULL;
+	t_list *next_ptr;
+
+	while (*alst)
+	{
+		next_ptr = (*alst)->next;
+		ft_lstdelone(alst, del);
+		*alst = next_ptr;
+	}
+	alst = NULL;
 }

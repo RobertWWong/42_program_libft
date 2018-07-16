@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_coord.c                                    :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rowong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/16 11:44:44 by rowong            #+#    #+#             */
-/*   Updated: 2018/07/16 11:45:02 by rowong           ###   ########.fr       */
+/*   Created: 2018/07/16 13:16:15 by rowong            #+#    #+#             */
+/*   Updated: 2018/07/16 13:16:16 by rowong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_init_coord(t_coord *pos)
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	pos->cur_pos = 0;
-	pos->next_pos = 0;
-	pos->cur_idx = 0;
-	return ;
+	if (!alst || !new)
+		return ;
+	new->next = *alst;
+	*alst = new;
 }
